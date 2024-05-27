@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Summary Website</title>
+    <link rel="stylesheet" href="styles.css"> 
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+    <style>
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%; /* تعديل لضمان امتداد الخلفية بالكامل */
+    font-family: Arial, sans-serif;
+    box-sizing:border-box;
+}
+body {
+    background-image: url(img/ai-technology-microchip-background-digital-transformation-concept.jpg);
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 90vh; /* ضمان امتداد الخلفية لكامل الصفحة */
+    box-sizing: border-box;
+    }
+header, footer {
+    text-align: right;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #1b0d0d;
+    font-weight: bold;
+    width: 80%;
+    margin: 20px auto; /* إضافة المسافة حول الheader والfooter */
+    border-radius: 10px;
+    letter-spacing: 0.1em;
+    box-sizing: border-box;
+    
+   
+            
+}
+footer {
+    position: relative;
+    width: 100%;
+    height: 80px;
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    box-sizing: border-box;
+}
+.home-style ul {
+    list-style-type: none;
+    padding: 8px;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.home-style li {
+    margin: 0 30px; /* إضافة هامش على اليمين واليسار */
+    padding: 2px; /* إضافة تباعد داخلي حول القائمة المنسدلة */
+    
+}
+.home-style a {
+    color: aliceblue;
+    text-decoration: none;
+    padding: 15px;
+    display: block;
+    
+    
+}
+.home-style a:hover {
+    background-color: #7b7b7b;
+    border-radius: 50px;
+}
+.language-selector {
+    margin: 0;
+    padding: 0;
+}
+
+select {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #b8b8b8;
+}
+.s
+.title {
+    font-size: 48px;
+    color: #ffffff;
+    margin-bottom: 15px;
+    text-align: center;
+}
+.slide {
+    display: none; /* يبقى هذا كما هو لإخفاء الشرائح غير النشطة */
+    width: 52%; /* حدد عرضًا ثابتًا للشرائح */
+    height: 350px; /* حدد ارتفاعًا ثابتًا لضمان التجانس */
+    margin-left: 590px;/* توسيط الشريحة وإعطاء مسافة أعلى وأسفل */
+    box-shadow: 0px 0px 10px #d2cfcf;
+    padding: 15px;
+    border-radius: 20px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: #ffffff;
+    box-sizing: border-box; /* تضمن هذه الخاصية أن الpadding والborder جزء من العرض والارتفاع الكلي */
+  
+}
+.active {
+    display: block;
+    
+}
+button {
+    padding: 10px 20px;
+    background-color: #000000;
+    color: white;
+    border: none;
+    border-radius: 40px;
+    position: absolute; /* جعل موضع الزر مطلقاً داخل الشريحة */
+    right: 90px; /* تحديد المسافة من اليمين */
+    bottom: -430px; /* تحديد المسافة من الأسفل */
+    box-sizing: border-box;
+}
+button:hover {
+    background-color: #4d4d4d;
+}
+.slide a{
+    font-size:large;
+    color: rgb(255, 255, 255);
+}
+.summary{
+    box-sizing: border-box;
+    width: 15%;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #f1f1f1;
+    text-align: center;
+    border-radius: 30px;
+    cursor: pointer;
+}
+.summary:hover{
+    background-color:rgba(255, 255, 255, 0.4);
+}
+.content {
+    font-size: 22px;
+    font-style: italic;
+    color: #ffffff;
+}
+h2{
+    color: #ffffff;
+}
+.img-slider {
+    display: inline-block;
+    cursor: pointer;
+    background-color: #ffffff;
+    border: 1px solid #ffffff;
+    border-radius: 50px;
+    padding: 6px 12px;
+    position: relative;
+    top: -210px;
+    left: 160px;
+    box-sizing: border-box;
+}
+.img-text{
+    display: inline-block;
+    cursor: pointer;
+    background-color: #ffffff;
+    border: 1px solid #ffffff;
+    border-radius: 50px;
+    padding: 6px 12px;
+    position: relative;
+    top: -310px;
+    left: 160px;
+}
+.img-book{
+    display: inline-block;
+    cursor: pointer;
+    background-color: #ffffff;
+    border: 1px solid #ffffff;
+    border-radius: 50px;
+    padding: 6px 12px;
+    position: relative;
+    top: -280px;
+    left: 160px;
+}
+#aboutUs {
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 20px;
+    width: 55%; /* تعديل عرض القسم */
+    margin-left: 570px;
+    box-shadow: 0px 0px 10px #d2cfcf;
+    border-radius: 20px;
+    box-sizing: border-box;
+}
+#aboutUs p {
+    color: #ffffff;
+}
+#aboutUs a{
+    color: #ffffff;
+    font-size: xx-large;
+}
+.transparent-box {
+        background-color: rgba(255, 255, 255, 0.0); /* خلفية شفافة */
+        position: absolute; /* تحديد الموضع */
+        right: 100px; /* المسافة من اليمين */
+        top: 220px;
+        padding: 20px;
+        max-width: 500px; /* عرض أقصى للصندوق */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.0); /* ظل */
+        box-sizing: border-box;
+    }
+
+    .title {
+    color:#ffffff;
+        font-size:60px;
+        font-weight: bold;
+        margin-bottom: 5px;
+        line-height: 1.2; /* تفادي التداخل بين السطور */
+    }
+
+    .content {
+        font-size: 30px;
+        font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        line-height: 1.4;
+    }
+</style>
+
+<body>
+    <header>
+        <nav class="home-style">
+    <ul>
+        <li><img src="img/logo2.png" style="width: 100px;"></li>
+    <li><a href="home.html"><i class="fa fa-home"></i> Home</a></li>
+    <li><a href="text.html"><i class="fa fa-file-text"></i> Text</a></li>
+    <li><a href="Book.html"><i class="fa fa-book"></i> Book</a></li>
+    <li><a href="#aboutUs"><i class="fa fa-info-circle"></i> AboutUs</a></li>
+    <select id="language">
+        <option value="en">English</option>
+        
+    </select>
+</ul>
+    </header>
+    <main>
+     <section>
+            <div class="transparent-box">
+                <div class="title">Tool Summarization</div>
+               <div class="content">
+                    AI summarization is a powerful tool used to condense large volumes of text into concise, readable summaries. This technology .
+                </div>
+            </div>
+        </section>
+    
+    <br><br><br><br> <br><br> <br><br> <br><br><br> <br><br><br><br> <br><br> <br><br> <br><br><br> <br><br><br><br> <br><br> <br><br> <br><br><br><br><br> <br><br> <br><br><br>
+       <div id="slide1" class="slide active">
+        <h1 style="font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">
+                Tool Summary</h1>
+            <br>
+            <p> 
+                A tool summary provides a brief overview of a specific tool, including its purpose, main features, and how it is used. This type of summary helps users quickly understand what the tool does and how it can be beneficial in various tasks or projects. It's especially useful for comparing different tools or deciding which one to use for a specific need. Tool summaries are common in fields such as technology, crafts, and any area where specialized equipment or software is used. 
+            </p>
+            <button onclick="showSlide(2);return false"> <img src="img/next.png"></button>
+            <label class="img-slider">
+                <img src="img/icons8-book.gif">
+            </label>
+        </div>
+    
+        <div class="box">
+        <div id="slide2" class="slide">
+            <h1 style="font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">
+                Text Summary</h1>
+             <br>
+            <p>
+                Text summarization is the process of reducing a long text to a shorter version, preserving the main information and key points. It makes texts easier to understand and more efficient in conveying essential information without needing to read all the details. This process is common in fields such as education, business, and scientific research, where people need to absorb a lot of information in a limited time. Summarization can be done manually by people or automatically using computer programs that rely on artificial intelligence to analyze the text and identify the essential elements to include in the summarized version.
+            </p>
+            <div class="summary">
+                <a href="text.html" class="no-underline"  style="text-decoration: none;  color: #000000;" > Try it! </a> 
+            </div>
+            
+            <button onclick="showSlide(1);return false " > <img src="img/next.png"></button>
+        <label for="" class="img-text">
+            <img src="img/icons8-text.gif">
+        </label>
+        </div>
+        <br>
+        <!--
+        <div id="slide2" class="slide">
+            <h1 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"> Book Summary </h1>
+             <br>
+            <p>
+                A book summary is a concise version of a book that includes the main points and key details of the original text. It allows readers to understand the overall plot, themes, and important characters without reading the entire book. Book summaries are useful for quickly getting an overview of a book's content, for review purposes, or for deciding whether to read the full text. They are commonly used by students, professionals, and anyone looking to save time while consuming literary content.
+            </p>
+            <div class="summary">
+              <a href="Book.html "style=" color: #000000;"> Summary </a> 
+            </div>
+                <button onclick="showSlide(1)"><img src="img/next.png"></button>
+            <label class="img-book">
+              <a href="Book.html">  <img src="img/icons8-book.gif">     </a>  
+            </label>
+        </div>
+        </div>
+    -->
+        <script>
+        function showSlide(n) {
+            var slides = document.getElementsByClassName('slide');
+            for (var i = 0; i < slides.length; i++) {
+                slides[i].style.display = 'none';
+            }
+            document.getElementById('slide' + n).style.display = 'block';
+        }
+        </script>
+        <br><br><br><br> <br><br><br><br><br><br><br><br><br><br><br> <br><br><br>
+        <section id="aboutUs">
+            <div class="container">
+              <a href="#aboutUs" style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;font-size: 40px; color:#ffffff; text-decoration: none;">AboutUs</a>
+              <br><br>
+                <p>
+                    This document provides an in-depth exploration of the book and text summarization project. Our idea provides a lot of help for those who want to have texts with fewer words, summarize large texts into smaller texts, and be able to translate them. In this idea, we targeted people who want to summarize texts in general and university students in particular. We are working to solve the problem of large texts that annoy and distract the student while studying. The texts will be small compared to the large texts and have the same accuracy. And free of errors that we will talk about.
+                </p>
+            </div>
+            
+            <div class="summary" style="width: 130px; right: 50;">
+                <a href=""    style=" text-decoration: none;  color: #000000; ">Back </a> 
+            </div>
+        </section>
+        <br><br><br><br> <br><br>
+    </main>
+</body>
+<footer>
+    <p>2024 AI Summarization Tool</p>
+</footer>
+</html>

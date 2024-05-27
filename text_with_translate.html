@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Summary Website</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        font-family: Arial, sans-serif;
+    }
+    body {
+        background-image: url(img/2862666.jpg);
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+    }
+    header, footer {
+        text-align: right;
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.4);
+        color: #1b0d0d;
+        font-weight: bold;
+        width: 80%;
+        margin: 20px auto;
+        border-radius: 20px;
+        letter-spacing: 0.1em;
+    }
+    header p {
+        font-size: medium;
+    }
+    footer p {
+        color: #ffffff;
+    }
+    footer {
+        position: relative;
+        width: 100%;
+        height: 80px;
+        background-color: rgba(0, 0, 0, 0.7);
+        color: white;
+        text-align: center;
+        padding: 20px 0;
+        box-sizing: border-box;
+    }
+    .text-style ul {
+        list-style-type: none;
+        padding: 8px;
+        margin: 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .text-style li {
+        margin: 0 30px;
+        padding: 2px;
+    }
+    .text-style a {
+        color: aliceblue;
+        text-decoration: none;
+        padding: 15px;
+        display: block;
+    }
+    .text-style a:hover {
+        background-color: #707070;
+        border-radius: 50px;
+    }
+    .language-selector {
+        margin: 0;
+        padding: 0;
+    }
+    select {
+        padding: 5px 10px;
+        border-radius: 5px;
+        border: 1px solid #b8b8b8;
+    }
+    .container {
+        width: 50%;
+        margin: 40px auto;
+        background-color: rgba(0, 0, 0, 0.8);
+        border-radius: 30px;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+        padding: 40px;
+    }
+    .text-input {
+        width: 90%;
+        height: 350px;
+        padding: 20px;
+        font-size: 16px;
+        background-color: #fefefe;
+        border: 1px solid #ccc;
+        border-radius: 20px;
+        resize: none;
+    }
+    .summary {
+        width: 80%;
+        font-size: 14px;
+        color: #000;
+        line-height: 1.6;
+        background-color: #ffffff;
+        border: 1px solid #ffffff;
+        border-radius: 20px;
+        padding: 10px;
+        margin: 1px auto;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: left;
+    }
+    .translation {
+        width: 80%;
+        font-size: 14px;
+        color: #000;
+        line-height: 1.6;
+        background-color: #ffffff;
+        border: 1px solid #ffffff;
+        border-radius: 20px;
+        padding: 10px;
+        margin: 1px auto;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: left;
+    }
+    h1, h2, h3 {
+        text-align: center;
+        font-size: large;
+        color: rgb(255, 255, 255);
+    }
+    .range-container {
+        width: 100%;
+        text-align: center;
+    }
+    .range-label {
+        margin-right: 20px;
+    }
+    .range-input {
+        width: 30%;
+        margin-bottom: 20px;
+    }
+    .range-value {
+        display: inline-block;
+        margin-left: 5px;
+    }
+    .button {
+        width: 30%;
+        height: 20%;
+        display: block;
+        margin: auto;
+        padding: 6px;
+        background-color: #4CAF50;
+        color: rgb(255, 255, 255);
+        border: none;
+        border-radius: 15px;
+        cursor: pointer;
+        text-align: center;
+    }
+    .button:hover {
+        background-color: #45a049;
+    }
+</style>
+<body>
+    <header>
+        <nav class="text-style">
+            <ul>
+                <li><img src="img/logo2.png" style="width: 100px;"></li>
+                <li><a href="home.html"><i class="fa fa-home"></i> Home</a></li>
+                <li><a href="text.html"><i class="fa fa-file-text"></i> Text</a></li>
+                <li><a href="Book.html"><i class="fa fa-book"></i> Book</a></li>
+                
+                <select id="language">
+                    <option value="en">English</option>
+                </select>
+            </ul>
+        </nav>
+    </header>
+
+    <section>
+        <div class="container">
+            <h1 style="font-size: 35px;">Text Summarize</h1>
+            <textarea id="textInput" class="text-input" placeholder="Enter text to summarize..."></textarea>
+            <br>
+            <div class="range-container">
+                <br>
+                <label class="range-label" for="summaryLength">Summary Length:</label>
+                short <input type="range" id="summaryLength" name="summaryLength" min="1" max="3" value="2" step="1"> Long
+                <span class="range-value" id="summaryValue"></span>
+            </div>
+            <br>
+            <button id="summarization_button" onclick="summarize()" class="button">Summarize</button>
+            <br>
+            <div id="summary" class="summary" style="display:none;"></div>
+            <br>
+            <button id="translation" class="button">Translate</button>
+            <br>
+        </div>
+    </section>
+
+    <footer>
+        <p>2024 AI Summarization Tool</p>
+    </footer>
+
+    <script>
+        const translateButton = document.getElementById('translation');
+        translateButton.addEventListener('click', translate);
+
+        document.getElementById('summaryLength').addEventListener('input', function() {
+            document.getElementById('summaryValue').textContent = this.value;
+        });
+
+        async function summarize() {
+            const textInput = document.getElementById('textInput').value;
+            const summaryLength = document.getElementById('summaryLength').value;
+            const summaryDiv = document.getElementById('summary');
+
+            try {
+                const response = await fetch('https://e402-176-29-78-194.ngrok-free.app/nutshell/summarize/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        document: textInput
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+
+                const data = await response.json();
+                summaryDiv.innerText = data.summary;
+                summaryDiv.style.display = 'block';
+            } catch (error) {
+                console.error('Error fetching summary:', error);
+                summaryDiv.innerText = 'Failed to load summary.';
+                summaryDiv.style.display = 'block';
+            }
+        }
+
+        async function translate() {
+            const summaryText = document.getElementById('summary').innerText;
+            const translationDiv = document.getElementById('translation');
+
+            if (!summaryText) {
+                console.error('Summary text is empty');
+                translationDiv.innerText = 'No summary to translate.';
+                translationDiv.style.display = 'block';
+                return;
+            }
+
+            try {
+                const response = await fetch('https://e402-176-29-78-194.ngrok-free.app/nutshell/translate/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        text: summaryText
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+
+                const data = await response.json();
+                translationDiv.innerText = data.translation;
+                translationDiv.style.display = 'block';
+            } catch (error) {
+                console.error('Error fetching translation:', error);
+                translationDiv.innerText = 'Failed to load translation.';
+                translationDiv.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
